@@ -1,17 +1,17 @@
 import './App.css';
 import Alert from './Components/Alert';
 import Navbar from './Components/Navbar';
-//import About from './Components/About';
+import About from './Components/About';
 import TextForm from './Components/TextForm';
 import React, { useState } from 'react';
-{/*import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   BrowserRouter as Router,
   Switch,
   Link
-} from "react-router-dom";*/}
+} from "react-router-dom";
 
-function App() {
+function App(){
   const [mode, setMode]= useState('light'); //whether dark mode is enabled or not
   const[alert, setAlert] = useState(null);
 
@@ -24,6 +24,7 @@ function App() {
         setAlert(null);
       },1500);
   }
+
 
 
   const toggleMode = ()=>{
@@ -41,30 +42,34 @@ function App() {
   
   return (
     <>
-      {/*<BrowserRouter>*/}
+      <BrowserRouter>
         <Navbar
-          title="TextUtils2"
-          
+          title="TextUtils"
+          aboutText="About TextUtils"
           mode={mode}
           toggleMode={toggleMode}
         />
         <Alert alert={alert} />
         <div className="container my-4" mode={mode}>
-          {/*<Routes>
-            <Route exact path="/about" element={<About />}></Route>
+          <Routes>
+            <Route exact path="/about" element={<About mode={mode} />}></Route>
             <Route
               exact path="/"
-              element={}*/}
+              element={
                 <TextForm
                   showAlert={showAlert}
-                  heading="Enter Text to analyze "
+                  heading="Try TextUtils  - Word Counter,Character Counter, Download Text "
                   mode={mode}
                 />
-            {/*}
-            </BrowserRouter>*/}
+              }
+            ></Route>
+          </Routes>
         </div>
+      </BrowserRouter>
     </>
   );
 }
+
+
 
 export default App;
